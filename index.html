@@ -5,148 +5,172 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CrackshashMod - BurpSuite Bounty Pro 2024</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #1e40af;
-            --secondary-color: #3b82f6;
-            --accent-color: #38bdf8;
-            --dark-color: #0f172a;
-            --light-color: #f8fafc;
+            --primary: #00e676;
+            --secondary: #121212;
+            --accent: #4a00e0;
+            --text: #f5f5f5;
         }
         
         body {
-            background-color: var(--dark-color);
-            color: var(--light-color);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            position: relative;
-            min-height: 100vh;
+            background-color: #0a0a0a;
+            color: var(--text);
+            font-family: 'Arial', sans-serif;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(0, 230, 118, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(74, 0, 224, 0.1) 0%, transparent 20%);
             overflow-x: hidden;
         }
         
-        body::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, rgba(15,23,42,0.8) 0%, rgba(15,23,42,1) 100%);
-            z-index: -1;
-        }
-        
-        .cybersecurity-grid {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px);
-            background-size: 50px 50px;
-            z-index: -1;
-            pointer-events: none;
-        }
-        
-        .card {
-            background: rgba(30, 41, 59, 0.7);
-            border-radius: 12px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(59, 130, 246, 0.3);
-            transition: all 0.3s ease;
-        }
-        
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 40px rgba(56, 189, 248, 0.2);
-        }
-        
-        .img-container {
-            overflow: hidden;
-            border-radius: 8px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-        }
-        
-        .img-container img {
-            transition: transform 0.5s ease;
-        }
-        
-        .img-container:hover img {
-            transform: scale(1.05);
-        }
-        
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            border-radius: 8px;
-            padding: 12px 24px;
-            font-weight: 600;
-            transition: all 0.3s ease;
+        .cybr-btn {
+            --shadow-primary: rgba(0, 230, 118, 0.5);
+            --shadow-secondary: rgba(74, 0, 224, 0.5);
+            --primary-color: #00e676;
+            --text-shadow: 0 0 2px rgba(0, 230, 118, 0.7), 0 0 8px rgba(0, 230, 118, 0.5);
+            --font-size: 1rem;
+            --primary-hue: 150;
+            
             position: relative;
-            z-index: 1;
+            display: inline-block;
+            padding: 12px 30px;
+            color: var(--primary-color);
+            background: var(--secondary);
+            border: 2px solid var(--primary-color);
+            border-radius: 8px;
+            text-transform: uppercase;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+            font-size: var(--font-size);
+            letter-spacing: 2px;
+            transition: all 0.2s ease;
+            font-weight: 600;
+            text-decoration: none;
+            box-shadow: 0 0 0 0 var(--shadow-primary);
+        }
+
+        .cybr-btn:hover {
+            background: rgba(0, 230, 118, 0.2);
+            box-shadow: 0 0 30px 5px var(--shadow-primary);
+            text-shadow: var(--text-shadow);
+        }
+
+        .cybr-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            background: rgba(128, 128, 128, 0.2);
+            border-color: #555;
+            color: #888;
+            box-shadow: none;
+        }
+
+        .unlock-btn {
+            --shadow-primary: rgba(74, 0, 224, 0.5);
+            --primary-color: #4a00e0;
+            --text-shadow: 0 0 2px rgba(74, 0, 224, 0.7), 0 0 8px rgba(74, 0, 224, 0.5);
+        }
+
+        .download-btn {
+            --shadow-primary: rgba(0, 230, 118, 0.5);
+            --primary-color: #00e676;
+            --text-shadow: 0 0 2px rgba(0, 230, 118, 0.7), 0 0 8px rgba(0, 230, 118, 0.5);
         }
         
-        .btn-primary::before {
-            content: '';
+        .glass-card {
+            background: rgba(18, 18, 18, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.36);
+        }
+        
+        .hero-gradient {
             position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            background: radial-gradient(circle at center, rgba(74, 0, 224, 0.3) 0%, transparent 70%);
             z-index: -1;
-            transition: opacity 0.3s ease;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            margin: 10px 0;
+            overflow: hidden;
+        }
+        
+        .progress {
+            height: 100%;
+            background-color: var(--primary);
+            border-radius: 5px;
+            transition: width 0.5s ease;
+        }
+        
+        .glow {
+            text-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary), 0 0 30px var(--primary);
+        }
+        
+        .cybr-text {
+            position: relative;
+            color: var(--text);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .cybr-text::before {
+            content: attr(data-text);
+            position: absolute;
+            color: var(--primary);
+            filter: blur(0.02em);
+            mix-blend-mode: difference;
+            animation: glitch 3s infinite linear alternate-reverse;
+        }
+        
+        @keyframes glitch {
+            0% {
+                transform: translate(0);
+            }
+            20% {
+                transform: translate(-2px, 2px);
+            }
+            40% {
+                transform: translate(-2px, -2px);
+            }
+            60% {
+                transform: translate(2px, 2px);
+            }
+            80% {
+                transform: translate(2px, -2px);
+            }
+            100% {
+                transform: translate(0);
+            }
+        }
+        
+        .checkmark {
+            display: inline-block;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            color: black;
+            text-align: center;
+            line-height: 22px;
+            margin-right: 10px;
             opacity: 0;
-        }
-        
-        .btn-primary:hover::before {
-            opacity: 1;
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
-        }
-        
-        .btn-disabled {
-            background: #64748b;
-            cursor: not-allowed;
-            opacity: 0.7;
-        }
-        
-        .btn-disabled:hover {
-            transform: none;
-            box-shadow: 0 4px 15px rgba(100, 116, 139, 0.3);
-        }
-        
-        .task-item {
-            background: rgba(30, 41, 59, 0.5);
-            border-radius: 8px;
-            padding: 16px;
-            margin-bottom: 16px;
-            border-left: 4px solid var(--secondary-color);
+            transform: scale(0);
             transition: all 0.3s ease;
         }
         
-        .task-item:hover {
-            background: rgba(30, 41, 59, 0.8);
-            transform: translateX(5px);
-        }
-        
-        .task-item.completed {
-            border-left: 4px solid #10b981;
-        }
-        
-        .task-item.completed .task-check {
-            color: #10b981;
+        .checkmark.active {
+            opacity: 1;
+            transform: scale(1);
         }
         
         .floating {
-            animation: float 6s ease-in-out infinite;
+            animation: float 3s ease-in-out infinite;
         }
         
         @keyframes float {
@@ -154,305 +178,331 @@
                 transform: translateY(0px);
             }
             50% {
-                transform: translateY(-20px);
+                transform: translateY(-15px);
             }
             100% {
                 transform: translateY(0px);
             }
         }
         
-        .pulse {
-            animation: pulse 2s infinite;
+        .img-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.4);
         }
         
-        @keyframes pulse {
-            0% {
-                box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.7);
-            }
-            70% {
-                box-shadow: 0 0 0 10px rgba(56, 189, 248, 0);
-            }
-            100% {
-                box-shadow: 0 0 0 0 rgba(56, 189, 248, 0);
-            }
+        .img-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 230, 118, 0.2) 0%, rgba(74, 0, 224, 0.2) 100%);
         }
         
-        .logo-text {
-            background: linear-gradient(135deg, #3b82f6, #38bdf8);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-        }
-        
-        .feature-icon {
-            font-size: 24px;
-            height: 50px;
-            width: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 12px;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            margin-bottom: 16px;
+        .task-link {
+            color: var(--primary);
+            font-weight: bold;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 4px;
             transition: all 0.3s ease;
         }
         
-        .feature-card:hover .feature-icon {
-            transform: rotateY(180deg);
+        .task-link:hover {
+            background-color: rgba(0, 230, 118, 0.2);
+            text-shadow: 0 0 5px rgba(0, 230, 118, 0.7);
         }
 
-        #downloadSection {
-            display: none;
+        .logo-container {
+            width: 100px;
+            height: 100px;
+            overflow: hidden;
+            border-radius: 50%;
+            border: 3px solid var(--primary);
+            box-shadow: 0 0 15px var(--shadow-primary);
         }
-        
-        .glow-border {
-            position: relative;
-        }
-        
-        .glow-border::after {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg, #3b82f6, #38bdf8, #3b82f6);
-            z-index: -1;
-            border-radius: 14px;
-            animation: animateGlow 3s linear infinite;
-        }
-        
-        @keyframes animateGlow {
-            0% {
-                background-position: 0% 50%;
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .hero-section {
+                flex-direction: column;
             }
-            50% {
-                background-position: 100% 50%;
+            .img-container {
+                margin-top: 20px;
             }
-            100% {
-                background-position: 0% 50%;
+            .cybr-btn {
+                width: 100%;
+                text-align: center;
+                margin: 10px 0;
             }
         }
     </style>
 </head>
-<body>
-    <div class="cybersecurity-grid"></div>
-    
-    <header class="py-4 md:py-6">
-        <div class="container mx-auto px-4">
-            <div class="flex justify-between items-center">
-                <div class="flex items-center">
-                    <h1 class="text-2xl md:text-4xl font-bold logo-text">Crackshash_mod</h1>
+<body class="min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <!-- Header -->
+        <header class="flex flex-col md:flex-row justify-between items-center mb-10">
+            <div class="flex items-center mb-4 md:mb-0">
+                <div class="logo-container mr-4">
+                    <img src="https://yt3.googleusercontent.com/pBA3gtPHAFWek_ufCkURxUIQhdM0aSfrbxKXKjufQTaF4ikZiKpzusiYnXImp1sfpygmeBzy=s160-c-k-c0x00ffffff-no-rj" alt="CrackshashMod Logo" class="w-full h-full object-cover">
                 </div>
-                <nav class="hidden md:flex space-x-6">
-                    <a href="#home" class="text-gray-300 hover:text-white transition-colors">Home</a>
-                    <a href="#features" class="text-gray-300 hover:text-white transition-colors">Features</a>
-                    <a href="#download" class="text-gray-300 hover:text-white transition-colors">Download</a>
-                </nav>
-                <button class="md:hidden text-white focus:outline-none">
-                    <i class="fas fa-bars text-xl"></i>
-                </button>
+                <h1 class="text-3xl md:text-4xl font-bold cybr-text" data-text="CrackshashMod">CrackshashMod</h1>
             </div>
-        </div>
-    </header>
-    
-    <main class="py-8">
-        <section id="home" class="container mx-auto px-4 py-8 md:py-16">
-            <div class="flex flex-col md:flex-row items-center gap-8">
-                <div class="md:w-1/2">
-                    <h2 class="text-3xl md:text-5xl font-bold mb-4">BurpSuite Bounty Pro</h2>
-                    <h3 class="text-xl md:text-2xl text-blue-400 mb-6">Professional Security Testing Suite</h3>
-                    <p class="text-gray-300 mb-8">Get the latest version of Burp Suite Professional v2024.3.1 with BurpBounty Pro 2.8.0 and JDK 22. Enhance your security testing capabilities with the most advanced security tools available.</p>
-                    <a href="#download" class="btn-primary inline-block">
-                        Download Now
-                    </a>
-                </div>
-                <div class="md:w-1/2">
-                    <div class="img-container floating">
-                        <img src="https://portswigger.net/cms/images/f0/4f/b1a1-article-cf87e80f-1e9a-4f4d-b498-84a0cf04113a.jpg" alt="BurpSuite Professional" class="w-full rounded-lg shadow-2xl">
+            <nav>
+                <ul class="flex space-x-6">
+                    <li><a href="#features" class="task-link">Features</a></li>
+                    <li><a href="#tasks" class="task-link">Tasks</a></li>
+                    <li><a href="#download" class="task-link">Download</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="mb-20 relative">
+            <div class="hero-gradient"></div>
+            <div class="glass-card p-8 md:p-12">
+                <div class="flex flex-col md:flex-row items-center hero-section">
+                    <div class="md:w-1/2 md:pr-8">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-6">BurpSuite Bounty Pro 2024</h2>
+                        <p class="mb-6 text-lg opacity-90">Get the latest version of Burp Suite Professional v2024.3.1 with BurpBounty Pro 2.8.0 and JDK 22. Enhance your security testing capabilities with the most advanced security tools available.</p>
+                        <a href="#download" class="cybr-btn">Learn More</a>
+                    </div>
+                    <div class="md:w-1/2 mt-8 md:mt-0">
+                        <div class="img-container floating">
+                            <img src="https://pbs.twimg.com/media/F9nTP_fXQAANkDF.jpg:large" alt="BurpSuite Professional" class="w-full rounded-lg shadow-2xl">
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
-        
-        <section id="features" class="bg-slate-900 py-12 md:py-20">
-            <div class="container mx-auto px-4">
-                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Powerful Features</h2>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="card p-6 feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-shield-alt"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold mb-4">Advanced Scanning</h3>
-                        <p class="text-gray-300">Comprehensive vulnerability scanning with customizable profiles and detection rules.</p>
+
+        <!-- Features Section -->
+        <section id="features" class="mb-20">
+            <h2 class="text-3xl font-bold mb-10 text-center">Powerful Features</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="glass-card p-6 transition-transform hover:scale-105 duration-300">
+                    <h3 class="text-xl font-bold mb-4 text-center">Advanced Scanning</h3>
+                    <div class="img-container mb-4">
+                        <img src="https://www.vaadata.com/blog/wp-content/uploads/2024/01/burp-suite-proxy-1024x536.png" alt="Advanced Scanning" class="w-full">
                     </div>
-                    <div class="card p-6 feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-bug"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold mb-4">Bug Hunting</h3>
-                        <p class="text-gray-300">Identify security vulnerabilities with automated and manual testing capabilities.</p>
+                    <p class="opacity-90">Comprehensive vulnerability scanning with customizable profiles and detection rules.</p>
+                </div>
+                <div class="glass-card p-6 transition-transform hover:scale-105 duration-300">
+                    <h3 class="text-xl font-bold mb-4 text-center">Bug Hunting</h3>
+                    <div class="img-container mb-4">
+                        <img src="https://burpbounty.net/wp-content/uploads/2021/06/dashboard-1024x536.png" alt="Bug Hunting" class="w-full">
                     </div>
-                    <div class="card p-6 feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-code"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold mb-4">Custom Exploits</h3>
-                        <p class="text-gray-300">Create and test custom exploits against discovered vulnerabilities.</p>
+                    <p class="opacity-90">Identify security vulnerabilities with automated and manual testing capabilities.</p>
+                </div>
+                <div class="glass-card p-6 transition-transform hover:scale-105 duration-300">
+                    <h3 class="text-xl font-bold mb-4 text-center">Custom Exploits</h3>
+                    <div class="img-container mb-4">
+                        <img src="https://i.ytimg.com/vi/e52ZNlj6t3o/maxresdefault.jpg" alt="Custom Exploits" class="w-full">
+                    </div>
+                    <p class="opacity-90">Create and test custom exploits against discovered vulnerabilities.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tools Section -->
+        <section class="mb-20">
+            <div class="glass-card p-8 md:p-12">
+                <div class="flex flex-col md:flex-row">
+                    <div class="md:w-1/2 md:pr-8 mb-6 md:mb-0">
+                        <h2 class="text-2xl font-bold mb-4">Burp Suite Professional</h2>
+                        <p class="mb-4 opacity-90">Burp Suite Professional is a leading cybersecurity tool used for web application security testing. It allows you to identify vulnerabilities, analyze traffic, and execute attacks in a controlled environment.</p>
+                        <ul class="list-disc pl-5 mb-6 opacity-90">
+                            <li>Advanced proxy capabilities</li>
+                            <li>Powerful scanning engine</li>
+                            <li>Customizable attack vectors</li>
+                            <li>Comprehensive reporting</li>
+                        </ul>
+                    </div>
+                    <div class="md:w-1/2">
+                        <h2 class="text-2xl font-bold mb-4">BurpBounty Pro</h2>
+                        <p class="mb-4 opacity-90">BurpBounty Pro extends the functionality of Burp Suite with active and passive scan checks for multiple vulnerabilities. It's an essential tool for security researchers and penetration testers.</p>
+                        <ul class="list-disc pl-5 mb-6 opacity-90">
+                            <li>Custom vulnerability profiles</li>
+                            <li>Automated scanning for common vulnerabilities</li>
+                            <li>Advanced payload management</li>
+                            <li>Integration with Burp Suite</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </section>
-        
-        <section class="container mx-auto px-4 py-12">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="card p-6">
-                    <h3 class="text-2xl font-bold mb-6">Burp Suite Professional</h3>
-                    <div class="img-container mb-6">
-                        <img src="https://www.vaadata.com/blog/wp-content/uploads/2024/01/burp-suite-proxy-1024x536.png" alt="BurpSuite Interface" class="w-full rounded-lg">
+
+        <!-- Tasks Section -->
+        <section id="tasks" class="mb-20">
+            <h2 class="text-3xl font-bold mb-10 text-center">Complete Tasks to Download</h2>
+            <div class="glass-card p-8 md:p-12">
+                <div class="mb-8">
+                    <h3 class="text-xl font-bold mb-4">Overall Progress</h3>
+                    <div class="progress-bar">
+                        <div class="progress" id="overall-progress" style="width: 0%;"></div>
                     </div>
-                    <p class="text-gray-300 mb-4">Burp Suite Professional is a leading cybersecurity tool used for web application security testing. It allows you to identify vulnerabilities, analyze traffic, and execute attacks in a controlled environment.</p>
-                    <ul class="list-disc list-inside text-gray-300 space-y-2 ml-4">
-                        <li>Advanced proxy capabilities</li>
-                        <li>Powerful scanning engine</li>
-                        <li>Customizable attack vectors</li>
-                        <li>Comprehensive reporting</li>
-                    </ul>
                 </div>
-                <div class="card p-6">
-                    <h3 class="text-2xl font-bold mb-6">BurpBounty Pro</h3>
-                    <div class="img-container mb-6">
-                        <img src="https://burpbounty.net/wp-content/uploads/2021/06/dashboard-1024x536.png" alt="BurpBounty Pro" class="w-full rounded-lg">
-                    </div>
-                    <p class="text-gray-300 mb-4">BurpBounty Pro extends the functionality of Burp Suite with active and passive scan checks for multiple vulnerabilities. It's an essential tool for security researchers and penetration testers.</p>
-                    <ul class="list-disc list-inside text-gray-300 space-y-2 ml-4">
-                        <li>Custom vulnerability profiles</li>
-                        <li>Automated scanning for common vulnerabilities</li>
-                        <li>Advanced payload management</li>
-                        <li>Integration with Burp Suite</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-        
-        <section id="download" class="container mx-auto px-4 py-12 md:py-20">
-            <div class="card p-8 max-w-3xl mx-auto">
-                <h2 class="text-3xl font-bold mb-8 text-center">Download BurpSuite Bounty Pro</h2>
-                <p class="text-center mb-8 text-gray-300">Complete the following tasks to unlock the download link:</p>
                 
-                <div id="taskSection">
-                    <div class="task-item" id="task1">
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center">
-                                <span class="task-check mr-4 text-xl">
-                                    <i class="far fa-circle"></i>
-                                </span>
-                                <div>
-                                    <h4 class="text-lg font-semibold">Task 1: Follow on Instagram</h4>
-                                    <p class="text-gray-300">Follow our Instagram account to stay updated with the latest cybersecurity content.</p>
-                                </div>
-                            </div>
-                            <a href="https://www.instagram.com/crackshash_mod?igsh=MTA3ZXRsbHR3dmVhbw==" target="_blank" class="btn-primary text-sm px-4 py-2" onclick="completeTask(1)">
+                <div class="flex flex-col md:flex-row flex-wrap">
+                    <div class="md:w-1/2 md:pr-6 mb-10">
+                        <div class="flex items-center mb-4">
+                            <span class="checkmark" id="instagram-check"><i class="fas fa-check"></i></span>
+                            <h3 class="text-xl font-bold">Task 1: Follow on Instagram</h3>
+                        </div>
+                        <p class="mb-4 opacity-90">Follow our Instagram account to stay updated with the latest cybersecurity content.</p>
+                        <div class="flex flex-col items-start">
+                            <a href="https://www.instagram.com/crackshash_mod?igsh=MTA3ZXRsbHR3dmVhbw==" target="_blank" class="cybr-btn mb-4" onclick="markTaskCompleted('instagram')">
                                 <i class="fab fa-instagram mr-2"></i> Follow
                             </a>
+                            <div class="progress-bar w-full md:w-4/5">
+                                <div class="progress" id="instagram-progress" style="width: 0%;"></div>
+                            </div>
                         </div>
                     </div>
                     
-                    <div class="task-item" id="task2">
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center">
-                                <span class="task-check mr-4 text-xl">
-                                    <i class="far fa-circle"></i>
-                                </span>
-                                <div>
-                                    <h4 class="text-lg font-semibold">Task 2: Subscribe on YouTube</h4>
-                                    <p class="text-gray-300">Subscribe to our YouTube channel for tutorials and cybersecurity updates.</p>
-                                </div>
-                            </div>
-                            <a href="https://www.youtube.com/@Crackshash_mod/featured" target="_blank" class="btn-primary text-sm px-4 py-2" onclick="completeTask(2)">
+                    <div class="md:w-1/2 md:pl-6 mb-10">
+                        <div class="flex items-center mb-4">
+                            <span class="checkmark" id="youtube-check"><i class="fas fa-check"></i></span>
+                            <h3 class="text-xl font-bold">Task 2: Subscribe on YouTube</h3>
+                        </div>
+                        <p class="mb-4 opacity-90">Subscribe to our YouTube channel for tutorials and cybersecurity updates.</p>
+                        <div class="flex flex-col items-start">
+                            <a href="https://www.youtube.com/@Crackshash_mod/featured" target="_blank" class="cybr-btn mb-4" onclick="markTaskCompleted('youtube')">
                                 <i class="fab fa-youtube mr-2"></i> Subscribe
                             </a>
+                            <div class="progress-bar w-full md:w-4/5">
+                                <div class="progress" id="youtube-progress" style="width: 0%;"></div>
+                            </div>
                         </div>
-                    </div>
-                    
-                    <div class="mt-8 text-center">
-                        <button id="checkTasksButton" class="btn-primary btn-disabled" disabled>
-                            <i class="fas fa-lock mr-2"></i> Unlock Download
-                        </button>
                     </div>
                 </div>
                 
-                <div id="downloadSection" class="mt-8">
-                    <div class="card glow-border p-6 text-center">
-                        <h3 class="text-2xl font-bold mb-4">Download Now</h3>
-                        <p class="mb-6 text-gray-300">
-                            Burp Suite Professional v2024.3.1 + BurpBounty_Pro 2.8.0 + JDK 22<br>
-                            <span class="text-yellow-400 font-semibold">NOTE - Run this version With Java SE JDK 22</span><br>
-                            Released Wednesday, 3 April 2024
-                        </p>
-                        <a href="https://dupload.net/mp1380f42jjk" target="_blank" class="btn-primary pulse inline-block">
-                            <i class="fas fa-download mr-2"></i> Download Now
-                        </a>
-                        <p class="mt-6 text-amber-300 text-sm">
-                            <i class="fas fa-exclamation-triangle mr-2"></i> If this version is expired, please stay updated with our channel for regular updates and new files.
-                        </p>
-                    </div>
+                <div class="text-center mt-8">
+                    <button id="unlock-btn" class="cybr-btn unlock-btn" disabled onclick="unlockDownload()">
+                        <i class="fas fa-unlock mr-2"></i> Unlock Download
+                    </button>
                 </div>
             </div>
         </section>
-    </main>
-    
-    <footer class="bg-slate-900 py-8">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-6 md:mb-0">
-                    <h3 class="text-2xl font-bold logo-text">Crackshash_mod</h3>
-                    <p class="text-gray-400 mt-2">Professional Cybersecurity Tools</p>
+
+        <!-- Download Section -->
+        <section id="download" class="mb-20">
+            <h2 class="text-3xl font-bold mb-10 text-center">Download BurpSuite Bounty Pro</h2>
+            <div class="glass-card p-8 md:p-12">
+                <div class="text-center mb-8">
+                    <h3 class="text-2xl font-bold mb-4">Burp Suite Professional v2024.3.1 + BurpBounty_Pro 2.8.0 + JDK 22</h3>
+                    <p class="mb-6 text-lg opacity-90">Released Wednesday, 3 April 2024</p>
+                    <p class="mb-6 text-lg opacity-90">Complete task first to get access</p>
+                    <div class="bg-black bg-opacity-50 p-4 rounded-lg mb-6 inline-block">
+                        <p class="text-yellow-400 font-semibold">NOTE - Run this version With Java SE JDK 22</p>
+                    </div>
                 </div>
-                <div class="flex space-x-4">
-                    <a href="https://www.instagram.com/crackshash_mod?igsh=MTA3ZXRsbHR3dmVhbw==" target="_blank" class="text-gray-400 hover:text-white transition-colors">
-                        <i class="fab fa-instagram text-xl"></i>
+                
+                <div class="text-center" id="download-container">
+                    <p class="mb-8 opacity-90">Complete the required tasks above to unlock the download button.</p>
+                    <a id="download-btn" href="https://dupload.net/mp1380f42jjk" class="cybr-btn download-btn" disabled style="pointer-events: none; opacity: 0.5;">
+                        <i class="fas fa-download mr-2"></i> Start Download
                     </a>
-                    <a href="https://www.youtube.com/results?search_query=%40crackshash_mod" target="_blank" class="text-gray-400 hover:text-white transition-colors">
-                        <i class="fab fa-youtube text-xl"></i>
-                    </a>
+                </div>
+                
+                <div class="mt-10 p-4 bg-black bg-opacity-40 rounded-lg border border-yellow-600">
+                    <p class="text-yellow-300"><i class="fas fa-exclamation-triangle mr-2"></i> <strong>Notice:</strong> If this version is expired, please stay updated with our channel for regular updates and new files.</p>
                 </div>
             </div>
-            <div class="border-t border-gray-800 mt-8 pt-8 text-center">
-                <p class="text-gray-400">
-                    &copy; 2024 Crackshash_mod. All rights reserved. Happy Hacking!
-                </p>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-8 text-center">
+            <p class="opacity-70 mb-4">© 2024 CrackshashMod - All rights reserved</p>
+            <div class="flex justify-center space-x-4">
+                <a href="https://www.instagram.com/crackshash_mod?igsh=MTA3ZXRsbHR3dmVhbw==" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+                    <i class="fab fa-instagram fa-lg"></i>
+                </a>
+                <a href="https://www.youtube.com/@Crackshash_mod/featured" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+                    <i class="fab fa-youtube fa-lg"></i>
+                </a>
             </div>
-        </div>
-    </footer>
-    
+        </footer>
+    </div>
+
     <script>
-        let tasks = {
-            1: false,
-            2: false
+        // Task tracking
+        const tasks = {
+            instagram: false,
+            youtube: false
         };
         
-        function completeTask(taskId) {
-            setTimeout(() => {
-                tasks[taskId] = true;
-                document.getElementById(`task${taskId}`).classList.add('completed');
-                document.querySelector(`#task${taskId} .task-check i`).className = 'fas fa-check-circle';
-                
-                // Check if all tasks are completed
-                if (tasks[1] && tasks[2]) {
-                    document.getElementById('checkTasksButton').classList.remove('btn-disabled');
-                    document.getElementById('checkTasksButton').disabled = false;
-                }
-            }, 1500); // Simulate some delay for verification
+        // Mark task as completed
+        function markTaskCompleted(task) {
+            tasks[task] = true;
+            updateProgress();
+            
+            // Activate checkmark
+            const checkElement = document.getElementById(`${task}-check`);
+            checkElement.classList.add('active');
+            
+            // Update progress bars
+            document.getElementById(`${task}-progress`).style.width = '100%';
+            
+            // Check if all tasks are completed
+            checkAllTasksCompleted();
         }
         
-        document.getElementById('checkTasksButton').addEventListener('click', function() {
-            if (tasks[1] && tasks[2]) {
-                document.getElementById('taskSection').style.display = 'none';
-                document.getElementById('downloadSection').style.display = 'block';
+        // Update overall progress
+        function updateProgress() {
+            const completedTasks = Object.values(tasks).filter(task => task).length;
+            const totalTasks = Object.keys(tasks).length;
+            const progressPercentage = (completedTasks / totalTasks) * 100;
+            
+            document.getElementById('overall-progress').style.width = `${progressPercentage}%`;
+        }
+        
+        // Check if all tasks are completed
+        function checkAllTasksCompleted() {
+            const allCompleted = Object.values(tasks).every(task => task);
+            
+            if (allCompleted) {
+                // Enable unlock button
+                const unlockBtn = document.getElementById('unlock-btn');
+                unlockBtn.disabled = false;
+                unlockBtn.innerHTML = '<i class="fas fa-unlock mr-2"></i> Unlock Download';
+                unlockBtn.classList.add('glow');
             }
+        }
+        
+        // Unlock download section
+        function unlockDownload() {
+            // Update download button
+            const downloadBtn = document.getElementById('download-btn');
+            downloadBtn.style.pointerEvents = 'auto';
+            downloadBtn.style.opacity = '1';
+            downloadBtn.disabled = false;
+            downloadBtn.classList.add('glow');
+            
+            // Update download container
+            document.getElementById('download-container').innerHTML = `
+                <p class="mb-8 text-lg font-semibold text-green-400">All tasks completed! Your download is now ready.</p>
+                <a id="download-btn" href="https://dupload.net/mp1380f42jjk" class="cybr-btn download-btn glow">
+                    <i class="fas fa-download mr-2"></i> Start Download
+                </a>
+            `;
+            
+            // Scroll to download section
+            document.getElementById('download').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // Demo function - For testing only
+        function demoComplete() {
+            markTaskCompleted('instagram');
+            markTaskCompleted('youtube');
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            updateProgress();
         });
     </script>
 </body>
